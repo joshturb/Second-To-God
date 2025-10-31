@@ -64,17 +64,32 @@ public class MovementModule : PlayerModule
 			fPCModule.staminaReductionRate = walkingStaminaMultiplier;
 		}
         
-    }	
+    }
 
-    public override void UpdateModule(FPCModule fPCModule)
-    {
-        Vector3 movement = input.y * fPCModule.transform.forward + input.x * fPCModule.transform.right;
-        movement.y = 0;
+	public override void UpdateModule(FPCModule fPCModule)
+	{
+		Vector3 movement = input.y * fPCModule.transform.forward + input.x * fPCModule.transform.right;
+		movement.y = 0;
 
 		float speed = isSprinting && fPCModule.currentStamina > 5 ? sprintingSpeed : walkingSpeed;
 
 		movement *= speed;
 
 		fPCModule.movement = new Vector3(movement.x, fPCModule.movement.y, movement.z);
-    }
+	}
+	
+	public bool IsMoving
+	{
+		get { return input != Vector2.zero; }
+	}
+
+	public bool IsWalking
+	{
+		get { return input != Vector2.zero && !isSprinting; }
+	}
+
+	public bool IsSprinting
+	{
+		get { return isSprinting; }
+	}
 }

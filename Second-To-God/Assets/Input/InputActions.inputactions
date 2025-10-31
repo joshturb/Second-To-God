@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputActions",
     "maps": [
         {
@@ -126,6 +127,15 @@
                     "name": "Left",
                     "type": "Button",
                     "id": "bf69d428-2a6c-49a4-b0dc-0520a377eb36",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Flashlight",
+                    "type": "Button",
+                    "id": "e0ca1b00-5e16-44f0-9f30-f85598d6bf20",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -378,7 +388,7 @@
                 {
                     "name": "",
                     "id": "1c04ea5f-b012-41d1-a6f7-02e963b52893",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -570,6 +580,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53e8c7b0-83a0-49a2-820d-235acb2f7af1",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Flashlight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "753c796f-6d37-471c-bb8e-1109ddc7c163",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Flashlight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

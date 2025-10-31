@@ -3,19 +3,26 @@ using UnityEngine.Rendering;
 
 public class TimeManager : MonoBehaviour
 {
+	[SerializeField] private float dayColortemperature = 6500f;
+	[SerializeField] private float dayLightIntensity = 1f;
+	[SerializeField] private float nightColortemperature = 2000f;
+	[SerializeField] private float nightLightIntensity = 0.1f;
 	[SerializeField] private Gradient dayGradient = new();
 	[SerializeField] private Gradient nightGradient = new();
+	[SerializeField] private Material daySkybox;
+	[SerializeField] private Material nightSkybox;
+	[SerializeField] private Light directionalLight;
 
-	[ContextMenu("Set Day Gradient")]
-	private void SetDayGradient()
+	[ContextMenu("Set Day ")]
+	private void SetDay()
 	{
-		SetGradient(true);
+		SetTime(true);
 	}
 
-	[ContextMenu("Set Night Gradient")]
-	private void SetNightGradient()
+	[ContextMenu("Set Night")]
+	private void SetNight()
 	{
-		SetGradient(false);
+		SetTime(false);
 	}
 
 	private void SetGradient(bool isDay)
@@ -26,7 +33,6 @@ public class TimeManager : MonoBehaviour
 			RenderSettings.ambientSkyColor = nightGradient.Evaluate(1f);
 			RenderSettings.ambientEquatorColor = nightGradient.Evaluate(0.5f);
 			RenderSettings.ambientGroundColor = nightGradient.Evaluate(0f);
-			DynamicGI.UpdateEnvironment();
 			return;
 		}
 
@@ -34,6 +40,39 @@ public class TimeManager : MonoBehaviour
 		RenderSettings.ambientSkyColor = dayGradient.Evaluate(1f);
 		RenderSettings.ambientEquatorColor = dayGradient.Evaluate(0.5f);
 		RenderSettings.ambientGroundColor = dayGradient.Evaluate(0f);
+	}
+
+	private void SetDirectionalLight(bool isDay)
+	{
+		if (directionalLight == null)
+			return;
+
+		if (isDay)
+		{
+			directionalLight.colorTemperature = dayColortemperature;
+			directionalLight.intensity = dayLightIntensity;
+		}
+		else
+		{
+			directionalLight.colorTemperature = nightColortemperature;
+			directionalLight.intensity = nightLightIntensity;	
+		}
+	}
+
+	public void SetTime(bool isDay)
+	{
+		if (isDay)
+		{
+			RenderSettings.skybox = daySkybox;
+			SetDirectionalLight(true);
+			SetGradient(true);
+		}
+		else
+		{
+			RenderSettings.skybox = nightSkybox;
+			SetDirectionalLight(false);
+			SetGradient(false);
+		}
 		DynamicGI.UpdateEnvironment();
 	}
 }

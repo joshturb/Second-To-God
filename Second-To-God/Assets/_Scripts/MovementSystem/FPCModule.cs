@@ -106,17 +106,30 @@ public class FPCModule : MonoBehaviour
         return false;
     }
 
-    public bool TryGetModule<T>(out T moduleOut) where T : PlayerModule
-    {
-        foreach (var module in modules)
+	public bool TryGetModule<T>(out T moduleOut) where T : PlayerModule
+	{
+		// Search existing modules list first
+		foreach (var module in modules)
+		{
+			if (module is T typedModule)
+			{
+				moduleOut = typedModule;
+				return true;
+			}
+		}
+
+        // Search children for any Component that matches the requested generic type T
+        Component[] childComponents = GetComponentsInChildren<Component>(true);
+        for (int i = 0; i < childComponents.Length; i++)
         {
-            if (module is T typedModule)
+            if (childComponents[i] is T typed)
             {
-                moduleOut = typedModule;
+                moduleOut = typed;
                 return true;
             }
         }
+
         moduleOut = null;
         return false;
-    }
+	}
 }
