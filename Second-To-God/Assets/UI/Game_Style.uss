@@ -1,0 +1,80 @@
+.header {
+}
+
+.dialoguebutton {
+    flex-shrink: 0;
+    position: relative;
+    min-height: 0;
+    height: 0;
+    width: 148px;
+    min-width: 0;
+}
+
+.interactionSlider {
+    scale: 0.1 0.1;
+    top: 3px;
+}
+
+#InteractSlider Label {
+    scale: 1 1;
+    top: auto;
+    font-size: 13px;
+    opacity: 1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+#InteractSlider VisualElement {
+    scale: 1 1;
+    top: 16px;
+    font-size: 0;
+    opacity: 1;
+    display: flex;
+    padding-top: 0;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-left-color: rgb(94, 94, 94);
+    border-right-color: rgb(94, 94, 94);
+    border-top-color: rgb(94, 94, 94);
+    border-bottom-color: rgb(94, 94, 94);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0;
+    -unity-text-outline-color: rgb(0, 0, 0);
+}
+
+#InteractSlider #unity-drag-container {
+    scale: 1 1;
+    top: 3px;
+    font-size: 13px;
+    opacity: 1;
+    display: flex;
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+    padding-bottom: 0;
+    padding-top: 0;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#InteractSlider #unity-dragger {
+    scale: 1 1;
+    top: 3px;
+    font-size: 13px;
+    opacity: 1;
+    display: none;
+    background-color: rgb(0, 0, 0);
+    background-size: 100% 100%;
+    padding-bottom: 0;
+    padding-top: 0;
+    align-self: center;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+}
