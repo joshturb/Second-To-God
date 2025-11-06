@@ -5,9 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player Movement/Camera Module")]
 public class CameraModule : PlayerModule
 {
-	[SerializeField]private float sensitivity = 1f;
+	[SerializeField] private float sensitivity = 1f;
     public float smoothTime = 20f;
     public float clampLookY = 85f;
+	public float crouchHeight = 1f;
+	public float standHeight = 2f;
 
     private float xRotation = 0f;
     private float yRotation = 0f;
@@ -16,7 +18,7 @@ public class CameraModule : PlayerModule
     private Vector2 currentMouseDelta;
 	private Transform cameraHolder;
 
-    public bool isLocked;
+	public bool isLocked;
     public override bool IsLocked { get => isLocked; set => isLocked = value; }
 
     private bool isInitialized;
@@ -56,6 +58,6 @@ public class CameraModule : PlayerModule
 
         // Apply rotations
         cameraHolder.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        fPCModule.transform.localRotation = Quaternion.Euler(0, yRotation, 0);
+		fPCModule.transform.localRotation = Quaternion.Euler(0, yRotation, 0);
     }
 }

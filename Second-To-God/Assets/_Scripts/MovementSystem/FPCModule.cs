@@ -44,7 +44,8 @@ public class FPCModule : MonoBehaviour
 		}
 		HandleStamina();
 
-		characterController.Move(movement * Time.deltaTime);
+		if (characterController.enabled)
+			characterController.Move(movement * Time.deltaTime);
 	}
 
 

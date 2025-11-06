@@ -15,6 +15,8 @@ public class Interaction : MonoBehaviour
 	public bool IsHovering;
 	private Slider interactionSlider;
 	private VisualElement crosshair;
+	private Label hoverTextLabel;
+	private bool isHoverTextLocked;
     [HideInInspector] public Camera playerCamera;
     private float interactTimer = 0f;
     private bool isInteractingWithDelayedObject = false;
@@ -27,6 +29,7 @@ public class Interaction : MonoBehaviour
 
 		crosshair = uiDocument.rootVisualElement.Q("Crosshair");
 		interactionSlider = uiDocument.rootVisualElement.Q<Slider>("InteractSlider");
+		hoverTextLabel = uiDocument.rootVisualElement.Q<Label>("HoverText");
 
 		if (interactionSlider != null)
 		{
@@ -64,6 +67,11 @@ public class Interaction : MonoBehaviour
 			crosshair.style.scale = new Vector3(1f, 1f, 1f);
 			ResetDelayedInteractionState();
 			IsHovering = false;
+			if (!isHoverTextLocked)
+			{
+				hoverTextLabel.text = "";
+			}
+
 			return;
 		}
 
@@ -99,18 +107,30 @@ public class Interaction : MonoBehaviour
 	{
 		if (raycastHitResults.collider.TryGetComponent(out IInteractable _) ||
 			raycastHitResults.collider.GetComponentInParent<IInteractable>() != null ||
-			raycastHitResults.collider.GetComponentInChildren<IInteractable>() != null ||
-			// added check for IHoldInteractable
-			raycastHitResults.collider.TryGetComponent(out IHoverText _) ||
-			raycastHitResults.collider.GetComponentInParent<IHoverText>() != null ||
-			raycastHitResults.collider.GetComponentInChildren<IHoverText>() != null)
+			raycastHitResults.collider.GetComponentInChildren<IInteractable>() != null)
 		{
+			if (raycastHitResults.collider.TryGetComponent(out IHoverText text) ||
+				raycastHitResults.collider.GetComponentInParent<IHoverText>() != null ||
+				raycastHitResults.collider.GetComponentInChildren<IHoverText>() != null)
+			{
+				text ??= raycastHitResults.collider.GetComponentInParent<IHoverText>();
+				text ??= raycastHitResults.collider.GetComponentInChildren<IHoverText>();
+				if (!isHoverTextLocked)
+					hoverTextLabel.text = text.HoverText;
+
+				return;
+			}
+
 			IsHovering = true;
 			crosshair.style.scale = new Vector3(1.5f, 1.5f, 1f);
 		}
 		else
 		{
 			IsHovering = false;
+			if (!isHoverTextLocked)
+			{
+				hoverTextLabel.text = "";
+			}
 		}
 	}
 
@@ -187,13 +207,28 @@ public class Interaction : MonoBehaviour
 			interactionSlider.visible = false;
     }
 
-    private void ResetInteractionState()
+	private void ResetInteractionState()
 	{
-        isInteractingWithDelayedObject = false;
-        hasInteractedDelayed = false;
-        canInteract = true;
+		isInteractingWithDelayedObject = false;
+		hasInteractedDelayed = false;
+		canInteract = true;
 		if (interactionSlider != null)
 			interactionSlider.value = 0;
-			interactionSlider.visible = false;
-    }
+		interactionSlider.visible = false;
+	}
+
+	public void LockHoverText()
+	{
+		isHoverTextLocked = true;
+	}
+
+	public void UnlockHoverText()
+	{
+		isHoverTextLocked = false;
+	}
+
+	public void SetHoverText(string text)
+	{
+		hoverTextLabel.text = text;
+	}
 }

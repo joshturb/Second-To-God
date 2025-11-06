@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa4d2ba6f9e5cb4cb8b951c762b79c4, type: 3}
   m_Name: Crouch
   m_EditorClassIdentifier: 
-  crouchingSpeed: 1
+  crouchingSpeed: 0.5
   crouchingStaminaMultiplier: 1
   crouchingHeightMultiplier: 0.5
-  crouchingCameraLerpSpeed: 5
+  crouchingCameraLerpSpeed: 20
   originalCameraPosition: {x: 0, y: 2.25, z: 0}
-  crouchingCameraPosition: {x: 0, y: 1, z: 0}
+  crouchingCameraPosition: {x: 0, y: 1.5, z: 0}
   standingBlockLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  toggleCrouch: 1
+  isCrouching: 0
+  toggleCrouch: 0
   isLocked: 0

@@ -15,4 +15,6 @@ MonoBehaviour:
   sensitivity: 0.25
   smoothTime: 50
   clampLookY: 90
+  crouchHeight: 1.5
+  standHeight: 2.15
   isLocked: 0

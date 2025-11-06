@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bfe500459410877449ba829b3d69ae04, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -63,6 +67,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfe500459410877449ba829b3d69ae04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6158083724530599635}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfe500459410877449ba829b3d69ae04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2481095524266290292}
   m_SourcePrefab: {fileID: 100100000, guid: bfe500459410877449ba829b3d69ae04, type: 3}
 --- !u!1 &3958717855869120910 stripped
 GameObject:
@@ -90,3 +97,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.030418, y: 1.0618095, z: 1.034664}
   m_Center: {x: 0.048826635, y: 1.0030792, z: 0.102422}
+--- !u!114 &2481095524266290292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958717855869120910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0250ba277edc4da418d155d65b6e9441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hiding
+  hidingOffset: {x: 0, y: 0, z: 0}

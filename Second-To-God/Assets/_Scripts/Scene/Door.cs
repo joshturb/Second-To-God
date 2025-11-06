@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour, IInteractable
+public class Door : MonoBehaviour, IInteractable, IHoverText
 {
 	[SerializeField] private Transform position1, position2;
+
+	public string HoverText => "Use Door";
 
 	public void Interact(RaycastHit hit, Transform player)
 	{

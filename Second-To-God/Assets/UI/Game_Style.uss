@@ -15,6 +15,40 @@
     top: 3px;
 }
 
+.inventorySlot {
+    background-color: rgba(142, 142, 142, 0.24);
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+    border-left-color: rgba(0, 0, 0, 0.35);
+    border-right-color: rgba(0, 0, 0, 0.35);
+    border-top-color: rgba(0, 0, 0, 0.35);
+    border-bottom-color: rgba(0, 0, 0, 0.35);
+    align-items: center;
+    justify-content: flex-end;
+    align-self: center;
+    align-content: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    min-height: 0;
+    min-width: 0;
+    width: 64px;
+    height: 64px;
+}
+
 #InteractSlider Label {
     scale: 1 1;
     top: auto;

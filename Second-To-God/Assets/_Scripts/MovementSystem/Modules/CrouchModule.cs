@@ -11,8 +11,8 @@ public class CrouchModule : PlayerModule
 	public Vector3 crouchingCameraPosition;
 	public LayerMask standingBlockLayers = ~0; // By default, all layers block standing
 
+	public bool isCrouching;
 	private Vector2 input;
-	private bool isCrouching;
 	private bool crouchToggleState = false;
 	public bool toggleCrouch = false;
 	private bool wantsToUncrouch = false;
@@ -28,9 +28,11 @@ public class CrouchModule : PlayerModule
 	private CapsuleCollider capsuleCollider;
 	private CharacterController characterController;
 	private Transform cameraHolder;
+	private FPCModule fPCModule;
 
 	public override void InitializeModule(FPCModule fPCModule)
 	{
+		this.fPCModule = fPCModule;
 		IsLocked = false;
 		capsuleCollider = fPCModule.GetComponent<CapsuleCollider>();
 		characterController = fPCModule.GetComponent<CharacterController>();
@@ -112,12 +114,14 @@ public class CrouchModule : PlayerModule
 
 	public override void UpdateModule(FPCModule fPCModule)
 	{
-		float y = fPCModule.movement.y;
-
-		fPCModule.movement = new(fPCModule.movement.x * crouchingSpeed, y, fPCModule.movement.z * crouchingSpeed);
+		if (isCrouching)
+		{
+			float y = fPCModule.movement.y;
+			fPCModule.movement = new(fPCModule.movement.x * crouchingSpeed, y, fPCModule.movement.z * crouchingSpeed);
+		}
 
 		// Check if player wants to uncrouch and can stand
-		if (wantsToUncrouch && CanStand(fPCModule))
+		if (wantsToUncrouch && CanStand())
 		{
 			isCrouching = false;
 			wantsToUncrouch = false;
@@ -162,7 +166,7 @@ public class CrouchModule : PlayerModule
 		}
 	}
 
-	private bool CanStand(FPCModule fPCModule)
+	private bool CanStand()
 	{
 		Vector3 start = fPCModule.transform.position;
 		float rayDistance = originalHeight - (originalHeight * crouchingHeightMultiplier);
@@ -188,18 +192,19 @@ public class CrouchModule : PlayerModule
 
 		return true;
 	}
-	
-	public void SetCrouchState(bool state, FPCModule fPCModule)
+
+	public void SetCrouchState(bool state)
 	{
 		if (state)
 		{
 			// Force crouch
 			isCrouching = true;
+			cameraHolder.transform.localPosition = crouchingCameraPosition;
 		}
 		else
 		{
 			// Only uncrouch if we have clearance
-			if (CanStand(fPCModule))
+			if (CanStand())
 			{
 				isCrouching = false;
 			}
@@ -209,7 +214,7 @@ public class CrouchModule : PlayerModule
 				isCrouching = true;
 			}
 		}
-		
+
 		wantsToUncrouch = false;
 		crouchToggleState = false;
 	}

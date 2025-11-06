@@ -15,6 +15,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  detectionLength: 0.2
-  gravityMultiplier: 1
+  detectionLength: 0.1
+  gravityMultiplier: 2
   isLocked: 0
