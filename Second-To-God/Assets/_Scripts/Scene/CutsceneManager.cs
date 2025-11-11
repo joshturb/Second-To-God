@@ -1,11 +1,18 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
+public struct CutsceneData
+{
+	public PlayableAsset cutsceneAsset;
+	public CutsceneBase cutsceneBehavior;
+}
+
 public class CutsceneManager : MonoBehaviour
 {
 	public static CutsceneManager Instance { get; private set; }
 	public PlayableDirector cutsceneDirector;
-	public PlayableAsset[] cutscenes;
+	public CutsceneData[] cutscenes;
+	private int currentCutsceneIndex;
 
 	private void Awake()
 	{
@@ -27,7 +34,22 @@ public class CutsceneManager : MonoBehaviour
 			return;
 		}
 
-		cutsceneDirector.playableAsset = cutscenes[index];
+		currentCutsceneIndex = index;
+		cutsceneDirector.playableAsset = cutscenes[index].cutsceneAsset;
+		cutscenes[index].cutsceneBehavior.StartCutscene();
 		cutsceneDirector.Play();
+	}
+
+	public void TriggerEvent(string eventName)
+	{
+		var cutsceneBehavior = cutscenes[currentCutsceneIndex].cutsceneBehavior;
+		if (cutsceneBehavior != null)
+		{
+			cutsceneBehavior.Trigger(eventName);
+		}
+		else
+		{
+			Debug.LogWarning("No CutsceneBase behavior found in the current playable asset.");
+		}
 	}
 }

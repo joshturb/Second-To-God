@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10daeebc1ce72a7438c2cafbb06f5662, type: 3}
   m_Name: Beer
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  DisplayName: Flashlight
-  Icon: {fileID: 0}
-  itemTypeId: 0
+  DisplayName: Hideurkin Beer
+  Icon: {fileID: 21300000, guid: 13e7bbf2cf71ad246ac84830e6a1a6d3, type: 3}
+  itemTypeId: 2
+  ikRotation: {x: 335.44998, y: 289.5011, z: 358.8709}
   holdRotation: {x: 0, y: 0, z: 0}
   groundRotation: {x: 0, y: 0, z: 0}
-  holdingPrefab: {fileID: 0}
-  groundPrefab: {fileID: 0}
+  holdingPrefab: {fileID: 3280229982336654003, guid: 9e0425c77c7de3141b03b2ed2ff1eff1, type: 3}
+  groundPrefab: {fileID: 1592234710623274071, guid: b53b661616f68ca42a1e483cfe523a8b, type: 3}

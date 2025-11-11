@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10daeebc1ce72a7438c2cafbb06f5662, type: 3}
   m_Name: Speaker
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  DisplayName: Flashlight
-  Icon: {fileID: 0}
-  itemTypeId: 0
-  holdRotation: {x: 0, y: 0, z: 0}
+  DisplayName: Bluetooth Speaker
+  Icon: {fileID: 21300000, guid: 6308b0712b014cf4395133dad9f3a9e3, type: 3}
+  itemTypeId: 5
+  ikOffset: {x: 0, y: 0, z: 0}
+  ikRotation: {x: 290.1272, y: 151.2758, z: 40.25592}
+  holdRotation: {x: 0, y: 45, z: 0}
   groundRotation: {x: 0, y: 0, z: 0}
-  holdingPrefab: {fileID: 0}
-  groundPrefab: {fileID: 0}
+  holdingPrefab: {fileID: 4835990049327313764, guid: 7fe9de4620cd0bc44858d41d3678ed0c, type: 3}
+  groundPrefab: {fileID: 1603098665366519148, guid: ee44ea4c1ba5279488e87a62daf3d449, type: 3}

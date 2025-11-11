@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10daeebc1ce72a7438c2cafbb06f5662, type: 3}
   m_Name: Pills
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  DisplayName: Flashlight
-  Icon: {fileID: 0}
-  itemTypeId: 0
+  DisplayName: Pills
+  Icon: {fileID: 21300000, guid: 2282b98572b038446929e67d6df2be25, type: 3}
+  itemTypeId: 9
+  ikRotation: {x: 332.2167, y: 199.09329, z: 9.409174}
   holdRotation: {x: 0, y: 0, z: 0}
   groundRotation: {x: 0, y: 0, z: 0}
-  holdingPrefab: {fileID: 0}
-  groundPrefab: {fileID: 0}
+  holdingPrefab: {fileID: 3553359153761846192, guid: f4b9925780194474b8e083f82a9f29dd, type: 3}
+  groundPrefab: {fileID: 893260841175316421, guid: 7bb089a4c42fad845a6e53c380e054eb, type: 3}

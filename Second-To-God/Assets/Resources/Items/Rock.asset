@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10daeebc1ce72a7438c2cafbb06f5662, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  DisplayName: Flashlight
-  Icon: {fileID: 0}
-  itemTypeId: 0
+  DisplayName: Rock
+  Icon: {fileID: 21300000, guid: 712d7e897c609f147840c01e1e6cb1b2, type: 3}
+  itemTypeId: 8
+  ikRotation: {x: 321.62814, y: 275.1011, z: 3.4195046}
   holdRotation: {x: 0, y: 0, z: 0}
   groundRotation: {x: 0, y: 0, z: 0}
-  holdingPrefab: {fileID: 0}
-  groundPrefab: {fileID: 0}
+  holdingPrefab: {fileID: 2788177393344189143, guid: 90985da894b38574ab5fc6107fb648bc, type: 3}
+  groundPrefab: {fileID: 5265031750160484864, guid: 731472ca0f73c9549aac556bca994598, type: 3}

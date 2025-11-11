@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10daeebc1ce72a7438c2cafbb06f5662, type: 3}
   m_Name: Bike
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  DisplayName: Flashlight
-  Icon: {fileID: 0}
-  itemTypeId: 0
+  DisplayName: Andrea's Bike
+  Icon: {fileID: 21300000, guid: 90efabb807defef48bb84f21ca5dfde6, type: 3}
+  itemTypeId: 4
+  ikRotation: {x: 290.54816, y: 101.120384, z: 106.437454}
   holdRotation: {x: 0, y: 0, z: 0}
   groundRotation: {x: 0, y: 0, z: 0}
-  holdingPrefab: {fileID: 0}
-  groundPrefab: {fileID: 0}
+  holdingPrefab: {fileID: 3285435820736439843, guid: fbcfe0bb39a878a4c92feb95956ae2ef, type: 3}
+  groundPrefab: {fileID: 3145175834400300440, guid: 217e3e79e981ad841a3be37da4d3e507, type: 3}

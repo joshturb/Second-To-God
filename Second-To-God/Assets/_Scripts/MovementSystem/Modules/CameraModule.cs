@@ -8,8 +8,6 @@ public class CameraModule : PlayerModule
 	[SerializeField] private float sensitivity = 1f;
     public float smoothTime = 20f;
     public float clampLookY = 85f;
-	public float crouchHeight = 1f;
-	public float standHeight = 2f;
 
     private float xRotation = 0f;
     private float yRotation = 0f;

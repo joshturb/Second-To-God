@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class PlayerInventory : InventoryBase, IGUI
 {
@@ -89,13 +88,12 @@ public class PlayerInventory : InventoryBase, IGUI
             return;
         }
 
-        OnSlotSelected?.Invoke(SelectedSlot, slotIndex);
-
-        HolsterItem();
-        // set selected slot locally
-        SelectedSlot = slotIndex;
+		HolsterItem();
         EquipItem(slotIndex);
-
+		
+        OnSlotSelected?.Invoke(SelectedSlot, slotIndex);
+		SelectedSlot = slotIndex;
+	
         lastSelectedSlot = slotIndex;
     }
 
@@ -113,26 +111,16 @@ public class PlayerInventory : InventoryBase, IGUI
 
         ItemData itemData = ItemDatabase.Instance.GetItemByID(slot.GetItemID());
 
-        var spawnedObj = Instantiate(itemData.holdingPrefab, holdTransform.position, Quaternion.Euler(itemData.holdRotation));
-        spawnedObj.transform.SetParent(holdTransform, false);
-
-        if (spawnedObj.TryGetComponent(out ParentConstraint constraint))
-        {
-            if (constraint.sourceCount > 0)
-                constraint.RemoveSource(0);
-
-            constraint.AddSource(new ConstraintSource()
-            {
-                sourceTransform = holdTransform,
-                weight = 1,
-            });
-        }
-
+        var spawnedObj = Instantiate(itemData.holdingPrefab);
+		spawnedObj.transform.SetParent(holdTransform);
+		spawnedObj.transform.position = holdTransform.position;
+		spawnedObj.transform.localRotation = Quaternion.Euler(itemData.holdRotation);
+		
         CurrentEquippedItem = spawnedObj;
         CurrentEquippedItem.name = spawnedObj.transform.name;
     }
 
-    private void HolsterItem()
+    public void HolsterItem()
     {
         if (CurrentEquippedItem != null)
         {
@@ -155,12 +143,9 @@ public class PlayerInventory : InventoryBase, IGUI
         
         HolsterItem();
 
-        Instantiate(itemData.groundPrefab, hitInfo.point + new Vector3(0, 0.05f, 0), Quaternion.Euler(itemData.groundRotation));
+        Instantiate(itemData.groundPrefab, hitInfo.point + new Vector3(0, 0.1f, 0), Quaternion.Euler(itemData.groundRotation));
 
-        // Remove from inventory (local)
-        var slot = inventorySlots[SelectedSlot];
-        slot.RemoveItem();
-        inventorySlots[SelectedSlot] = slot;
+        RemoveItem(SelectedSlot);
     }
 
     public ItemData GetHeldItemData()

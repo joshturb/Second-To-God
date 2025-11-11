@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10daeebc1ce72a7438c2cafbb06f5662, type: 3}
   m_Name: Cigar
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  DisplayName: Flashlight
-  Icon: {fileID: 0}
-  itemTypeId: 0
+  DisplayName: Cigar
+  Icon: {fileID: 21300000, guid: 76e8bbcf6aa0dc445a68f99494929412, type: 3}
+  itemTypeId: 3
+  ikRotation: {x: 279.33228, y: 76.88545, z: 117.49495}
   holdRotation: {x: 0, y: 0, z: 0}
   groundRotation: {x: 0, y: 0, z: 0}
-  holdingPrefab: {fileID: 0}
-  groundPrefab: {fileID: 0}
+  holdingPrefab: {fileID: 4545398857801400670, guid: 3362b5de663cdc74bb28d97b9d497322, type: 3}
+  groundPrefab: {fileID: 2434562778283377726, guid: 2f2c737504217c24a9eb3e8b9fe5d577, type: 3}

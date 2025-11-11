@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10daeebc1ce72a7438c2cafbb06f5662, type: 3}
   m_Name: Salt
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  DisplayName: Flashlight
-  Icon: {fileID: 0}
-  itemTypeId: 0
+  DisplayName: Salt
+  Icon: {fileID: 21300000, guid: c956c16b1c4890749a3fc3b63625d55f, type: 3}
+  itemTypeId: 1
+  ikRotation: {x: 290.15356, y: 257.7623, z: 320.1582}
   holdRotation: {x: 0, y: 0, z: 0}
   groundRotation: {x: 0, y: 0, z: 0}
-  holdingPrefab: {fileID: 0}
-  groundPrefab: {fileID: 0}
+  holdingPrefab: {fileID: 6770403388670704317, guid: f5501c39a75a13a40aec499e24acc771, type: 3}
+  groundPrefab: {fileID: 522963221409603862, guid: 54e849f74c36a674785302fa584f789c, type: 3}

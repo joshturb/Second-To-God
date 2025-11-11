@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Movement
   m_EditorClassIdentifier: 
   walkingSpeed: 4
-  sprintingSpeed: 10
+  sprintingSpeed: 7
   walkingStaminaMultiplier: 0
   sprintingStaminaMultiplier: 2
+  speedLerp: 10
   toggleSprint: 0
   isLocked: 0

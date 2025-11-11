@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10daeebc1ce72a7438c2cafbb06f5662, type: 3}
   m_Name: Cross
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  DisplayName: Flashlight
-  Icon: {fileID: 0}
-  itemTypeId: 0
+  DisplayName: Cross
+  Icon: {fileID: 21300000, guid: 3f7c3017daaebc9439223b1968c9ec9a, type: 3}
+  itemTypeId: 6
   holdRotation: {x: 0, y: 0, z: 0}
   groundRotation: {x: 0, y: 0, z: 0}
-  holdingPrefab: {fileID: 0}
-  groundPrefab: {fileID: 0}
+  holdingPrefab: {fileID: 914118785963466403, guid: 5a6d615732a20584fb61a7aa49c23084, type: 3}
+  groundPrefab: {fileID: 7481658727437926878, guid: 83dd351f2f9161f4bb553c37365c3f0d, type: 3}

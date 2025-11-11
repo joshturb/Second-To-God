@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 [CreateAssetMenu(menuName = "Player Movement/Animation Module")]
 public class AnimationModule : PlayerModule
 {
+	private TwoBoneIKConstraint rightHandIK;
 	private Animator animator;
 	private MovementModule movementModule;
 	private CrouchModule crouchModule;
+	private PlayerInventory playerInventory;
 
 	private bool isWalking;
 	private bool isSprinting;
@@ -49,6 +52,39 @@ public class AnimationModule : PlayerModule
 		{
 			Debug.LogError("CrouchModule not found on the FPCModule.");
 		}
+
+		if (!fPCModule.TryGetComponent(out playerInventory))
+		{
+			Debug.LogError("PlayerInventory component not found on the FPCModule.");
+		}
+		playerInventory.OnSlotSelected += OnSlotSelected;
+		playerInventory.OnInventorySlotChanged += OnInventorySlotChanged;
+
+		rightHandIK = fPCModule.GetComponentInChildren<TwoBoneIKConstraint>();
+		rightHandIK.weight = 0;
+	}
+
+	private void OnInventorySlotChanged(InventorySlot slot)
+	{
+		if (slot.IsEmpty())
+		{
+			rightHandIK.weight = 0;
+		}
+	}
+
+	private void OnSlotSelected(int selectedSlot, int index)
+	{
+		if (playerInventory.CurrentEquippedItem == null)
+		{
+			rightHandIK.weight = 0;
+			return;
+		}
+		ItemData item = playerInventory.inventorySlots[index].GetItemData();
+
+		Transform equipped = playerInventory.CurrentEquippedItem.transform;
+		// Use the equipped item's world position/rotation and apply the item-specific rotation offset
+		rightHandIK.data.target.SetPositionAndRotation(equipped.position, equipped.rotation * Quaternion.Euler(item.ikRotation));
+		rightHandIK.weight = 1;
 	}
 
 	public override void OnModuleRemoved(FPCModule fPCModule)
@@ -57,7 +93,16 @@ public class AnimationModule : PlayerModule
 		isSprinting = false;
 	}
 
-	public override void HandleInput(FPCModule fPCModule) { }
+	public override void HandleInput(FPCModule fPCModule)
+	{
+		if (playerInventory == null)
+			return;
+
+		if (playerInventory.CurrentEquippedItem == null)
+			return;
+
+		rightHandIK.data.target.position = playerInventory.CurrentEquippedItem.transform.position;
+	}
 
 	public override void UpdateModule(FPCModule fPCModule)
 	{
@@ -104,10 +149,10 @@ public class AnimationModule : PlayerModule
 
 	public void StopAnimations()
 	{
-		isCrouching = false;
+		isCrouching = true;
 		isWalking = false;
 		isSprinting = false;
-		animator.SetBool("IsCrouching", false);
+		animator.SetBool("IsCrouching", true);
 		animator.SetBool("IsWalking", false);
 		animator.SetBool("IsSprinting", false);
 	}

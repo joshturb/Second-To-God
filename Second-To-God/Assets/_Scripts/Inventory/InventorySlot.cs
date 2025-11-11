@@ -64,6 +64,11 @@ public struct InventorySlot
 		return itemTypeId;
 	}
 
+	public readonly ItemData GetItemData()
+	{
+		return ItemDatabase.Instance.GetItemByID(itemTypeId);
+	}
+
 	// only used when making new instance.
 
 	public void SetSlotState(SlotState state)

@@ -6,7 +6,8 @@ public class ItemData : ScriptableObject, IEquatable<ItemData>
 {
     public string DisplayName;
     public Sprite Icon;
-    public ItemTypeId itemTypeId;
+	public ItemTypeId itemTypeId;
+	public Vector3 ikRotation;
 	public Vector3 holdRotation;
 	public Vector3 groundRotation;
     public GameObject holdingPrefab;

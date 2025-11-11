@@ -13,4 +13,5 @@ public enum ItemTypeId : sbyte
 	Cross = 6,
 	Robe = 7,
 	Rock = 8,
+	Pills = 9,
 }

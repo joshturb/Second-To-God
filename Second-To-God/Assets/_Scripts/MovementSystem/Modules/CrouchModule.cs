@@ -27,7 +27,6 @@ public class CrouchModule : PlayerModule
 	private Vector3 originalCenter;
 	private CapsuleCollider capsuleCollider;
 	private CharacterController characterController;
-	private Transform cameraHolder;
 	private FPCModule fPCModule;
 
 	public override void InitializeModule(FPCModule fPCModule)
@@ -36,8 +35,6 @@ public class CrouchModule : PlayerModule
 		IsLocked = false;
 		capsuleCollider = fPCModule.GetComponent<CapsuleCollider>();
 		characterController = fPCModule.GetComponent<CharacterController>();
-
-		cameraHolder = fPCModule.playerCamera.transform.parent;
 
 		if (capsuleCollider != null)
 		{
@@ -153,17 +150,6 @@ public class CrouchModule : PlayerModule
 				characterController.center = originalCenter;
 			}
 		}
-		if (cameraHolder != null)
-		{
-			if (isCrouching)
-			{
-				cameraHolder.localPosition = Vector3.Lerp(cameraHolder.localPosition, crouchingCameraPosition, Time.deltaTime * crouchingCameraLerpSpeed);
-			}
-			else
-			{
-				cameraHolder.localPosition = Vector3.Lerp(cameraHolder.localPosition, originalCameraPosition, Time.deltaTime * crouchingCameraLerpSpeed);
-			}
-		}
 	}
 
 	private bool CanStand()
@@ -199,7 +185,6 @@ public class CrouchModule : PlayerModule
 		{
 			// Force crouch
 			isCrouching = true;
-			cameraHolder.transform.localPosition = crouchingCameraPosition;
 		}
 		else
 		{
